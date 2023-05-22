@@ -1,0 +1,22 @@
+/* Element Menu */
+
+.menu-container {
+
+}
+
+.menu-container ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+
+.menu-container ul li {
+	padding: 0 10px;
+}
+
+/* Drop Zone */
+
+.drop-zone {
+	border: solid;
+	height: 100px;
+}
