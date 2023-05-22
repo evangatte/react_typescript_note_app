@@ -38,28 +38,33 @@ const DraggableComponent = () => {
 		event.preventDefault();
 		setDragging(true);
 		const elementRect = elementRef.current?.getBoundingClientRect();
-		if (elementRect) {
-		const offsetX = event.clientX - elementRect.left;
-		const offsetY = event.clientY - elementRect.top;
-		setOffset({ x: offsetX, y: offsetY });
+		const dropZoneRect = event.currentTarget.parentElement?.parentElement?.getBoundingClientRect();
+
+		if (elementRect && dropZoneRect) {
+			let offsetX = event.clientX - elementRect.left;
+			let offsetY = event.clientY - elementRect.top;
+
+			if (dropZoneRect)
+				offsetY += dropZoneRect.top
+				
+			setOffset({ x: offsetX, y: offsetY });
 		}
 	};
 
 	return (
-		<div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-			<div
+		<div
+			className='draggable-component'
+			// ref={elementRef}
+			style={{
+				top: position.y,
+				left: position.x,
+			}}
+		>
+			<div className="drag-bar"
 				ref={elementRef}
-				style={{
-					position: 'absolute',
-					top: position.y,
-					left: position.x,
-					width: '100px',
-					height: '100px',
-					backgroundColor: 'red',
-					cursor: 'move',
-				}}
 				onMouseDown={handleMouseDown}
-			/>
+			>
+			</div>
 		</div>
 	);
 };
