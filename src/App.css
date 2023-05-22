@@ -1,22 +1,24 @@
 /* Element Menu */
 
 .menu-container {
-
-}
-
-.menu-container ul {
-	list-style: none;
 	display: flex;
 	justify-content: center;
+	border-bottom: solid;
 }
 
-.menu-container ul li {
-	padding: 0 10px;
+/* draggable component drag bar*/
+.drag-bar {
+	height: 10px;
+	border: solid;
 }
+
+
 
 /* Drop Zone */
 
 .drop-zone {
 	border: solid;
-	height: 100px;
+	height: 100vh;
+	position: relative;
+	/* height: 500px; */
 }

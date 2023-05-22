@@ -21,7 +21,7 @@ const DropZone: React.FC = () => {
 	return (
 		<div className='drop-zone' onDragOver={handleDragOver} onDrop={handleDrop}>
 			{droppedComponents.map((component, index) => (
-				<DraggableComponent key={index}>{component}</DraggableComponent>
+				<DraggableComponent key={index}></DraggableComponent>
 			))}
 		</div>
 	);

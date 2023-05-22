@@ -7,7 +7,8 @@ import DropZone from './components/DropZone';
 function App() {
 	return (
 		<div className="App">
-			<DraggableComponent children="test" />
+			<ElementMenu />
+			{/* <DraggableComponent /> */}
 			<DropZone />
 
 		</div>
