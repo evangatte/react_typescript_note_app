@@ -38,7 +38,7 @@
 	position: absolute;
 	width: 100px;
 	height: 100px;
-	border: solid;
+	border: 2px solid black;
 }
 
 .draggable-component-content-active {
@@ -84,5 +84,6 @@
 .drop-zone {
 	background-color: #444645;
 	height: 100vh;
+	width: 100%;
 	position: relative;
 }

@@ -42,7 +42,13 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 			if (elementDragRef.current && dragging) {
 				const newX = event.clientX - offset.x;
 				const newY = event.clientY - offset.y;
-				setPosition({ x: newX, y: newY });
+
+				// stop draggable component from being dragged out of screen
+				if (newY <= 1) {
+					setPosition({ x: newX, y: 1 })
+				} else {
+					setPosition({ x: newX, y: newY });
+				}
 			}
 		};
 
@@ -50,6 +56,7 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 			setDragging(false);
 		};
 
+		
 		if (dragging) {
 			document.addEventListener('mousemove', handleMouseMoveDrag);
 			document.addEventListener('mouseup', handleMouseUpDrag);
@@ -76,8 +83,9 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 			let offsetY = event.clientY - elementRect.top;
 
 			// adjust for the offset of the navbar
-			if (dropZoneRect)
+			if (dropZoneRect) {
 				offsetY += dropZoneRect.top
+			}
 
 			setOffset({ x: offsetX, y: offsetY });
 		}
@@ -108,6 +116,7 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 		}
 
     }, [contentEditableRef, contentEditable]);
+
 
 	return (
 		<div className='draggable-component'
