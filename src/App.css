@@ -6,28 +6,40 @@
 	border-bottom: solid;
 }
 
-/* draggable component drag bar*/
+/* draggable component */
 
 .drag-bar {
-	height: 10px;
+	display: flex;
+	justify-content: center;
 	width: 100%;
-	border: solid;
+	border-bottom: solid;
 	cursor: move;
 }
 
 .draggable-component {
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	width: 100px;
 	height: 100px;
 	border: solid;
 }
 
+.draggable-component-content {
+	/* position: inherit; */
+	height: 100%;
+}
 
+.draggable-component-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-top: solid;
+}
 
 /* Drop Zone */
 
 .drop-zone {
-	border: solid;
 	height: 100vh;
 	position: relative;
 }

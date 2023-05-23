@@ -8,8 +8,10 @@ export const ElementMenu = () => {
 	};
 
 	return (
-		<div className="menu-container" draggable={true} onDragStart={handleDragStart}>
-			New Note
+		<div className="menu-container">
+			<div className="menu-item" draggable={true} onDragStart={handleDragStart}>
+				New Note
+			</div>
 		</div>
 	)
 }
