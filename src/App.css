@@ -13,6 +13,7 @@
 /* draggable component */
 
 .drag-bar {
+	background-color: white;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -29,12 +30,22 @@
 	border: solid;
 }
 
-.draggable-component-content {
-	/* position: inherit; */
+.draggable-component-content-active {
+	height: 100%;
+	background-color: white;
+}
+
+.draggable-component-content-disabled {
+	pointer-events: none;
+	opacity: 3.6;
+	background-color: lightgray; 
+	cursor: not-allowed;
 	height: 100%;
 }
 
+
 .draggable-component-footer {
+	background-color: white;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

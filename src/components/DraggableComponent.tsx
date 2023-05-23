@@ -22,6 +22,11 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 
 	const [componentSize, setComponentSize] = useState({ height: '300px', width: '300px' });
 
+	/** Content Editable **/
+
+	const contentEditableRef = useRef<HTMLDivElement>(null);
+	const [contentEditable, setContentEditable] = useState(true)
+
 	const elementDragRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -77,6 +82,24 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 		setDroppedComponents(droppedComponents.filter((item: DropComponent) => item.id !== id ));
 	}
 
+	/** Set content editable **/
+
+	const handleContentEditable = () => {
+		setContentEditable(!contentEditable);
+	}
+
+	const handleBlur = () => {
+		(contentEditableRef.current as HTMLDivElement).contentEditable = 'false';
+		setContentEditable(false)
+	}
+
+	useEffect(() => {
+		if (contentEditable) {
+			contentEditableRef.current?.focus();
+		}
+
+    }, [contentEditableRef, contentEditable]);
+
 	return (
 		<div className='draggable-component' 
 			style={{ 
@@ -85,17 +108,26 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 				height: componentSize.height,
 				width: componentSize.width
 			}}>
+
 			<div className="drag-bar"
 				ref={elementDragRef}
 				onMouseDown={handleMouseDownDrag}
 			>
 				Click here to drag me
 			</div>
-			<div className="draggable-component-content">lorem or something like that</div>
+
+			<div 
+				onBlur={handleBlur}
+				autoFocus 
+				ref={contentEditableRef}  
+				contentEditable={contentEditable} 
+				className={contentEditable ? "draggable-component-content-active p-1": "p-1 draggable-component-content-disabled"}
+			></div>
+
 			<div className="draggable-component-footer"> 
-				<button disabled={true} >Edit</button>
+				<button onClick={handleContentEditable}>Edit</button>
+				{/* <button onClick={handleContentApprove}>Approve</button> */}
 				<button onClick={() => handleDelete(singleComponent.id)}>Delete</button>
-				<button disabled={true}>Approve</button>
 				<button disabled={true} className='resize-button'>resize</button>
 			</div>
 		</div>
