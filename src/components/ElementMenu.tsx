@@ -10,7 +10,7 @@ export const ElementMenu = () => {
 	return (
 		<div className="menu-container">
 			<div className="menu-item" draggable={true} onDragStart={handleDragStart}>
-				New Note
+				<button className='new-note'>New Note (click this button and drag it below)</button>
 			</div>
 		</div>
 	)

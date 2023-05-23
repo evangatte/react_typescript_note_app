@@ -6,6 +6,10 @@
 	border-bottom: solid;
 }
 
+.new-note:hover {
+	background-color: gray;
+}
+
 /* draggable component */
 
 .drag-bar {

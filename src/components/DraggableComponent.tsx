@@ -93,10 +93,10 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 			</div>
 			<div className="draggable-component-content">lorem or something like that</div>
 			<div className="draggable-component-footer"> 
-				<button>Edit</button>
+				<button disabled={true} >Edit</button>
 				<button onClick={() => handleDelete(singleComponent.id)}>Delete</button>
-				<button>Approve</button>
-				<span className='resize-button'>resize</span>
+				<button disabled={true}>Approve</button>
+				<button disabled={true} className='resize-button'>resize</button>
 			</div>
 		</div>
 	);
