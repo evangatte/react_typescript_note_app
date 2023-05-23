@@ -1,9 +1,18 @@
 /* Element Menu */
 
 .menu-container {
+	background-color: #343541;
 	display: flex;
 	justify-content: center;
 	border-bottom: solid;
+}
+
+.menu-container button {
+	background-color: #444645;
+	color: #FFFF;
+	margin: 10px;
+	font-size: 16px;
+	border-radius: 4px;
 }
 
 .new-note:hover {
@@ -13,11 +22,13 @@
 /* draggable component */
 
 .drag-bar {
-	background-color: white;
+	background-color: #343541;
+	color: #FFF;
 	display: flex;
 	justify-content: center;
 	width: 100%;
 	border-bottom: solid;
+	border-color: black;
 	cursor: move;
 }
 
@@ -32,29 +43,46 @@
 
 .draggable-component-content-active {
 	height: 100%;
-	background-color: white;
+	background-color: #40414F;
+	color: #FFFF;
 }
 
 .draggable-component-content-disabled {
+	background-color: #343541;
+	color: #FFFF;
 	pointer-events: none;
-	opacity: 3.6;
-	background-color: lightgray; 
 	cursor: not-allowed;
 	height: 100%;
 }
 
 
 .draggable-component-footer {
-	background-color: white;
+	/* background-color: #444645; */
+
+	background-color: #343541;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	border-top: solid;
 }
 
+.draggable-component-footer button {
+	background-color: #444645;
+	color: #FFFF;
+	margin: 5px;
+	font-size: 16px;
+	border-radius: 4px;
+}
+
+
+.draggable-component-footer button:hover:not(:disabled) {
+	background-color: gray;
+}
+
 /* Drop Zone */
 
 .drop-zone {
+	background-color: #444645;
 	height: 100vh;
 	position: relative;
 }
