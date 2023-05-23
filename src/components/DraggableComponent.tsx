@@ -4,13 +4,15 @@ import { DropComponent } from '../interfaces/DropComponent';
 interface Props {
 	dropPositionX: number,
 	dropPositionY: number,
+	largestZIndex: number,
+	setLargestZIndex: React.Dispatch<React.SetStateAction<number>>
 	singleComponent: DropComponent,
 	droppedComponents: DropComponent[],
 	setDroppedComponents: React.Dispatch<React.SetStateAction<DropComponent[]>>
 }
 
 
-const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, singleComponent, droppedComponents ,setDroppedComponents }: Props) => {
+const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, singleComponent, droppedComponents ,setDroppedComponents, largestZIndex, setLargestZIndex }: Props) => {
 
 	/** Dragging **/
 
@@ -27,7 +29,12 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 	const contentEditableRef = useRef<HTMLDivElement>(null);
 	const [contentEditable, setContentEditable] = useState(true)
 
+	/** Component z-index **/
+
+	const [componentZIndex, setComponentZIndex] = useState(0)
+
 	const elementDragRef = useRef<HTMLDivElement>(null);
+
 
 	useEffect(() => {
 		const handleMouseMoveDrag = (event: MouseEvent) => {
@@ -88,6 +95,8 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 		setContentEditable(!contentEditable);
 	}
 
+	/** Blur component when something outside of it is clicked **/
+
 	const handleBlur = () => {
 		(contentEditableRef.current as HTMLDivElement).contentEditable = 'false';
 		setContentEditable(false)
@@ -101,8 +110,16 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
     }, [contentEditableRef, contentEditable]);
 
 	return (
-		<div className='draggable-component' 
+		<div className='draggable-component'
+			onMouseDown={() => { 
+				let newZindex = largestZIndex;
+				newZindex += 1;
+				setLargestZIndex(newZindex);
+				setComponentZIndex(newZindex)
+			}}
+
 			style={{ 
+				zIndex: componentZIndex, 
 				top: position.y, 
 				left: position.x, 
 				height: componentSize.height,
@@ -126,7 +143,6 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 
 			<div className="draggable-component-footer"> 
 				<button onClick={handleContentEditable}>Edit</button>
-				{/* <button onClick={handleContentApprove}>Approve</button> */}
 				<button onClick={() => handleDelete(singleComponent.id)}>Delete</button>
 				<button disabled={true} className='resize-button'>resize</button>
 			</div>

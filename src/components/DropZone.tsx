@@ -3,10 +3,16 @@ import DraggableComponent from './DraggableComponent';
 import { DropComponent } from '../interfaces/DropComponent';
 
 const DropZone: React.FC = () => {
+	/** Track cursor position to know where to place dropped component **/
+
 	const [cursorPositionX, setCursorPositionX] = useState<number>(0)
 	const [cursorPositionY, setCursorPositionY] = useState<number>(0)
 
 	const [droppedComponents, setDroppedComponents] = useState<DropComponent[]>([]);
+
+	/** Track largest z-index to apply to component when it is clicked **/
+
+	const [largestZIndex, setlargestZIndex] = useState(0)
 
 	const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
 		event.preventDefault();
@@ -25,10 +31,13 @@ const DropZone: React.FC = () => {
 		}
 	};
 
+
 	return (
 		<div className='drop-zone' onDragOver={handleDragOver} onDrop={handleDrop}>
 			{droppedComponents.map((component, index) => (
 				<DraggableComponent
+					largestZIndex={largestZIndex}
+					setLargestZIndex={setlargestZIndex}
 					singleComponent={component}
 					droppedComponents={droppedComponents} 
 					setDroppedComponents={setDroppedComponents}
