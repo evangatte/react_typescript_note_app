@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DraggableComponent from './DraggableComponent';
-import { DropComponent } from '../interfaces/DropComponent';
+import { DroppedComponent } from '../interfaces/DroppedComponent';
 
 const DropZone: React.FC = () => {
 	/** Track cursor position to know where to place dropped component **/
@@ -8,7 +8,7 @@ const DropZone: React.FC = () => {
 	const [cursorPositionX, setCursorPositionX] = useState<number>(0)
 	const [cursorPositionY, setCursorPositionY] = useState<number>(0)
 
-	const [droppedComponents, setDroppedComponents] = useState<DropComponent[]>([]);
+	const [droppedComponents, setDroppedComponents] = useState<DroppedComponent[]>([]);
 
 	/** Track largest z-index to apply to component when it is clicked **/
 

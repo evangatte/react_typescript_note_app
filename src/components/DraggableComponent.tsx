@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DropComponent } from '../interfaces/DropComponent';
+import { DroppedComponent } from '../interfaces/DroppedComponent';
 
 interface Props {
 	dropPositionX: number,
 	dropPositionY: number,
 	largestZIndex: number,
 	setLargestZIndex: React.Dispatch<React.SetStateAction<number>>
-	singleComponent: DropComponent,
-	droppedComponents: DropComponent[],
-	setDroppedComponents: React.Dispatch<React.SetStateAction<DropComponent[]>>
+	singleComponent: DroppedComponent,
+	droppedComponents: DroppedComponent[],
+	setDroppedComponents: React.Dispatch<React.SetStateAction<DroppedComponent[]>>
 }
 
 
@@ -94,7 +94,7 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 	/** Delete component from drop zone **/
 
 	const handleDelete = (id: number) => {
-		setDroppedComponents(droppedComponents.filter((item: DropComponent) => item.id !== id ));
+		setDroppedComponents(droppedComponents.filter((item: DroppedComponent) => item.id !== id ));
 	}
 
 	/** Set content editable **/
@@ -117,12 +117,18 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 
     }, [contentEditableRef, contentEditable]);
 
+	/** When component is dropped in dropzone give it largest z-index **/
+
+	useEffect(() => {
+		let newZindex = largestZIndex + 1;
+		setLargestZIndex(newZindex);
+		setComponentZIndex(newZindex)
+	}, [])
 
 	return (
 		<div className='draggable-component'
 			onMouseDown={() => { 
-				let newZindex = largestZIndex;
-				newZindex += 1;
+				let newZindex = largestZIndex + 1;
 				setLargestZIndex(newZindex);
 				setComponentZIndex(newZindex)
 			}}
