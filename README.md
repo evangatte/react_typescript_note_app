@@ -3,4 +3,5 @@
 - Demo: https://evangatte.github.io/react_typescript_note_app/
 
 
+![Demo Image](public/demoImage.png)
 
