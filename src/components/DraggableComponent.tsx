@@ -153,7 +153,6 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 			<div className="draggable-component-footer"> 
 				<button onClick={handleContentEditable}>Edit</button>
 				<button onClick={() => handleDelete(singleComponent.id)}>Delete</button>
-				<button disabled={true} className='resize-button'>resize</button>
 			</div>
 		</div>
 	);
