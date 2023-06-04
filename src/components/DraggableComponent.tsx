@@ -22,7 +22,7 @@ const DraggableComponent: React.FC<Props> = ({ dropPositionX, dropPositionY, sin
 
 	/** Resize Component **/
 
-	const [componentSize, setComponentSize] = useState({ height: '300px', width: '300px' });
+	const [componentSize, setComponentSize] = useState({ height: '350px', width: '300px' });
 
 	/** Content Editable **/
 

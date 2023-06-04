@@ -45,6 +45,7 @@
 	height: 100%;
 	background-color: #40414F;
 	color: #FFFF;
+	overflow-y: auto;
 }
 
 .draggable-component-content-disabled {
@@ -53,6 +54,7 @@
 	pointer-events: none;
 	cursor: not-allowed;
 	height: 100%;
+	overflow-y: auto;
 }
 
 
