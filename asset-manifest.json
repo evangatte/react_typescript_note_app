@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react_typescript_note_app/static/css/main.e6559178.css",
-    "main.js": "/react_typescript_note_app/static/js/main.080f477e.js",
+    "main.css": "/react_typescript_note_app/static/css/main.36435778.css",
+    "main.js": "/react_typescript_note_app/static/js/main.1b7371db.js",
     "index.html": "/react_typescript_note_app/index.html",
-    "main.e6559178.css.map": "/react_typescript_note_app/static/css/main.e6559178.css.map",
-    "main.080f477e.js.map": "/react_typescript_note_app/static/js/main.080f477e.js.map"
+    "main.36435778.css.map": "/react_typescript_note_app/static/css/main.36435778.css.map",
+    "main.1b7371db.js.map": "/react_typescript_note_app/static/js/main.1b7371db.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6559178.css",
-    "static/js/main.080f477e.js"
+    "static/css/main.36435778.css",
+    "static/js/main.1b7371db.js"
   ]
 }
